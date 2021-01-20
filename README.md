@@ -1,6 +1,7 @@
 # Wut is it? 
 
 This is a simple project of a usb-connected MySensors gateway based on cheap STM32 dev board from AliExpress.
+
 ![board](images/board.jpg)
 
 # Instructions
@@ -36,18 +37,18 @@ With these rules intact, udev will make the board always switch to the gateway m
 
 The gateway provides the following sensors and switches: 
 
-0 - Overall RX packets
-1 - 10 Minutes RX packets
-2 - Min. packet interval RX, ms
-3 - Max. packet interval RX, ms
-4 - Avg. packet interval RX, ms
-5 - Overall TX packets
-6 - 10 Minutes TX packets
-7 - Min. packet interval TX
-8 - Max. packet interval TX
-9 - Avg. packet interval TX
-10 - Virtual switch. Turn on to reboot to bootloader.
-11 - Virtual switch. Turn on to reboot the gateway (skipping the bootloader)
+- 0 - Overall RX packets
+- 1 - 10 Minutes RX packets
+- 2 - Min. packet interval RX, ms
+- 3 - Max. packet interval RX, ms
+- 4 - Avg. packet interval RX, ms
+- 5 - Overall TX packets
+- 6 - 10 Minutes TX packets
+- 7 - Min. packet interval TX
+- 8 - Max. packet interval TX
+- 9 - Avg. packet interval TX
+- 10 - Virtual switch. Turn on to reboot to bootloader.
+- 11 - Virtual switch. Turn on to reboot the gateway (skipping the bootloader)
 
 To display statistics in two HomeAssistant cards, add the following cards to your LoveLace UI. 
 The statistics give you an overview of your network traffic and can aid in managing your network
