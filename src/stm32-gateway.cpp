@@ -9,10 +9,6 @@
  * 
  */
 
-//#define MY_DEBUG
-//#define MY_DEBUG_VERBOSE_RF24
-//#define MY_DEBUG_VERBOSE_SIGNING
-
 #define MY_RF24_CE_PIN (PB0)
 #define MY_RF24_CS_PIN (PB2)
 #define MY_RF24_IRQ_PIN (PA15)
@@ -29,10 +25,7 @@ Shame, we have a crapload of RAM for the buffer
 
 */
 
-#include "../../wisp/src/wireless-n0.h"
-#undef MY_RF24_CHANNEL
-#define MY_RF24_CHANNEL 65
-
+#include "config.h"
 #include <MySensors.h>
 
 class GatewayStats
