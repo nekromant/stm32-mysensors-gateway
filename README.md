@@ -1,6 +1,7 @@
 # Wut is it? 
 
 This is a simple project of a usb-connected MySensors gateway based on cheap STM32 dev board from AliExpress.
+![board](images/board.jpg)
 
 # Instructions
 
@@ -8,17 +9,30 @@ This is a simple project of a usb-connected MySensors gateway based on cheap STM
 
 Check out dapboot/ directory for a prebuilt one. Flash it with stm32flash or stlink to your board.
 
-For the gateway itself: 
-* Install the platformio 
+The sources are here: https://github.com/devanlai/dapboot
+Patch them with dapboot.patch that alters the bluepill board target.
+
+# Compile the gateway
+* Install the platformio, RTFM: https://platformio.org/install
 * Clone this repository 
 * Edit src/config.h to suit your needs 
-* Connect the board via usb and run`pio run -t upload`
+* Connect the board via usb and run `pio run -t upload`
 * REMOVE BOOT1 JUMPER AWAY FROM THE BOARD (OR RADIO WILL NOT WORK!)
 
-You are done
+Your gateway is ready to use. Enjoy.
+
+## Install udev rules
+
+Copy 99-mysensors.rules to /etc/udev/rules.d and run
+
+```
+udevadm control --reload-rules
+udevadm trigger
+```
+
+With these rules intact, udev will make the board always switch to the gateway mode. Disable rules if you are manually hacking something.
 
 # Statistics
-
 
 The gateway provides the following sensors and switches: 
 

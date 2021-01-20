@@ -1,0 +1,55 @@
+diff --git a/src/stm32f103/bluepill/config.h b/src/stm32f103/bluepill/config.h
+index 1f64b7e..adb0477 100644
+--- a/src/stm32f103/bluepill/config.h
++++ b/src/stm32f103/bluepill/config.h
+@@ -39,26 +39,27 @@
+ #define HAVE_LED 1
+ #endif
+ #ifndef LED_OPEN_DRAIN
+-#define LED_OPEN_DRAIN 1
++#define LED_OPEN_DRAIN 0
+ #endif
++
+ #ifndef LED_GPIO_PORT
+-#define LED_GPIO_PORT GPIOC
++#define LED_GPIO_PORT GPIOA
+ #endif
+ #ifndef LED_GPIO_PIN
+-#define LED_GPIO_PIN GPIO13
++#define LED_GPIO_PIN GPIO1
+ #endif
+ 
+ #ifndef HAVE_BUTTON
+ #define HAVE_BUTTON 1
+ #endif
+ #ifndef BUTTON_ACTIVE_HIGH
+-#define BUTTON_ACTIVE_HIGH 1
++#define BUTTON_ACTIVE_HIGH 0
+ #endif
+ #ifndef BUTTON_GPIO_PORT
+-#define BUTTON_GPIO_PORT GPIOB
++#define BUTTON_GPIO_PORT GPIOA
+ #endif
+ #ifndef BUTTON_GPIO_PIN
+-#define BUTTON_GPIO_PIN GPIO2
++#define BUTTON_GPIO_PIN GPIO8
+ #endif
+ // Blue-Pull has 100k resistors on PB2, so we can't use weak pulls to read it.
+ #ifndef BUTTON_USES_PULL
+@@ -73,12 +74,12 @@
+ #define HAVE_USB_PULLUP_CONTROL 0
+ #endif
+ 
+-#ifndef USES_GPIOB
+-#define USES_GPIOB 1
++#ifndef USES_GPIOA
++#define USES_GPIOA 1
+ #endif
+ 
+-#ifndef USES_GPIOC
+-#define USES_GPIOC 1
++#ifndef USES_GPIOA
++#define USES_GPIOA 1
+ #endif
+ 
+ #endif

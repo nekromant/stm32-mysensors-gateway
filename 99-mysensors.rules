@@ -1,0 +1,1 @@
+ACTION=="add", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="db42", RUN+="/usr/bin/dfu-util -e"
