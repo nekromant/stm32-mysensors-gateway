@@ -9,10 +9,18 @@
  * 
  */
 
+#ifdef BOARD_STM32
 #define MY_RF24_CE_PIN (PB0)
 #define MY_RF24_CS_PIN (PB2)
 #define MY_RF24_IRQ_PIN (PA15)
 #define MY_DEFAULT_RX_LED_PIN (PA1)
+#define MY_SIGNING_SOFT_RANDOMSEED_PIN PA12
+#endif
+
+#ifdef BOARD_RFNANO
+#define MY_RF24_CE_PIN 9 
+#define MY_RF24_CS_PIN 10 
+#endif
 
 /* 
 
@@ -183,6 +191,7 @@ public:
             (message.getDestination() == 0) &&
             (message.getInt() == 1))
         {
+            #ifdef BOARD_STM32
             /* Drive the pin low, as if the button is pressed */
             if (message.getSensor() == offset) {
                 /* reboot to bootloader */
@@ -199,6 +208,7 @@ public:
                 wait(500);
                 *(SCB_AIRCR) = SCB_AIRCR_RESET;
             }
+            #endif
             
         }
     }
@@ -206,19 +216,23 @@ public:
 
 void preHwInit()
 {
+#ifdef BOARD_STM32
     disableDebugPorts();
     pinMode(PA1, OUTPUT);
     pinMode(PB0, OUTPUT);
     pinMode(PB2, OUTPUT);
+#endif
 }
 
 void before()
 {
 }
 
+static char nodenamebuf[64];
 void setup()
 {
-    sendSketchInfo("The Ancient Gateway", "1.0");
+    snprintf(nodenamebuf, sizeof(nodenamebuf)-1, "%s CH %d", "The Ancient Gateway", MY_RF24_CHANNEL);
+    sendSketchInfo(nodenamebuf, "1.1");
 }
 
 GatewayStats stats_rx(0, (char *)"RX");

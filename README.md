@@ -5,22 +5,28 @@ This is a simple project of a usb-connected MySensors gateway based on cheap STM
 ![board](images/board.jpg)
 
 # Instructions
-
 ## Burn the bootloader. 
 
-Check out dapboot/ directory for a prebuilt one. Flash it with stm32flash or stlink to your board.
+Check out dapboot/ directory for a prebuilt one. Flash it with stm32flash or stlink to your board. The boards I've ordered have no bootloader whatsoever.
 
 The sources are here: https://github.com/devanlai/dapboot
 Patch them with dapboot.patch that alters the bluepill board target.
 
+# Edit the config
+ 
+ Open up src/config.h and adjust parameters as needed
 # Compile the gateway
+
 * Install the platformio, RTFM: https://platformio.org/install
 * Clone this repository 
 * Edit src/config.h to suit your needs 
+* Download dependencies `pio lib install`
 * Connect the board via usb and run `pio run -t upload`
 * REMOVE BOOT1 JUMPER AWAY FROM THE BOARD (OR RADIO WILL NOT WORK!)
 
 Your gateway is ready to use. Enjoy.
+
+WARNING: Running pio `run -t upload` straight away won't work! It's a known issue.
 
 ## Install udev rules
 
@@ -31,7 +37,7 @@ udevadm control --reload-rules
 udevadm trigger
 ```
 
-With these rules intact, udev will make the board always switch to the gateway mode. Disable rules if you are manually hacking something.
+With these rules intact, udev will make the board always switches to the gateway mode. Disable the rule if you are manually hacking something.
 
 # Statistics
 
